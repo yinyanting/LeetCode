@@ -1,0 +1,31 @@
+package ReverseInteger;
+
+import java.util.Vector;
+
+public class Solution {
+	
+	public int reverse(int x){		
+		double result=0,meresult=Math.abs(x),shang=meresult/10,beishu=10,yushu=0;
+		if(Math.abs(meresult)>((int)Math.pow(2,31)-1))
+			return 0;
+		boolean ifZero=true;
+		while(shang>0){
+			yushu=meresult%beishu;//求余数
+			if(yushu!=0)
+				ifZero=false;
+			if(!ifZero){
+				if(Math.abs(result*10)>((int)Math.pow(2,31)-1))
+					return 0;
+				result=result*10+yushu;
+			}
+			meresult=(meresult-yushu)/beishu;
+			shang=meresult/beishu;//求商
+			
+		}
+		if(x<0)
+			result=-result;
+		return (int)result;
+	}
+	
+
+}
